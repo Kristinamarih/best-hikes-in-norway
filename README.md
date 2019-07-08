@@ -1,8 +1,6 @@
-# Best::Hikes::In::Norway
+# Best Hikes In Norway
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/best/hikes/in/norway`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This Ruby Gem provides a CLI to view the best hikes in Norway according to Earth Trekkers (https://www.earthtrekkers.com/best-hikes-in-norway-and-svalbard/). Hikes can be selected based on duration, difficulty, and location.
 
 ## Installation
 
