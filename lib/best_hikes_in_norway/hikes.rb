@@ -1,4 +1,4 @@
-class Hikes::Hike
+class BestHikes::Hikes
   
   attr_accessor :name, :location, :duration, :difficulty, :description, :url 
   

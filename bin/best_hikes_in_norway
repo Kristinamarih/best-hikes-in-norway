@@ -2,4 +2,4 @@
 
 require_relative '../lib/best_hikes_in_norway'
 
-Hikes::CLI.new.call
+BestHikes::CLI.new.call

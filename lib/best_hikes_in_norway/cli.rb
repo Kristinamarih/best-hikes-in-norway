@@ -1,7 +1,7 @@
-class Hikes::CLI 
+class BestHikes::CLI 
   
   def call 
-    Hikes::Scraper.new
+    BestHikes::Scraper.new
     puts "Best Hikes in Norway"
     start
   end
