@@ -1,0 +1,3 @@
+class Hikes::Scraper
+  
+end
