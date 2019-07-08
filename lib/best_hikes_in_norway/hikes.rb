@@ -4,6 +4,10 @@ class Hikes::Hike
   
   @@all = []
   
+  def self.new_from_page
+    
+  end
+  
   def initialize(name=nil, location=nil, url=nil)
     @name = name 
     @location = location 
@@ -15,4 +19,16 @@ class Hikes::Hike
     @@all 
   end
   
+  def duration 
+    
+  end
+  
+  def difficulty
+    
+  end
+  
+  def description 
+    
+  end
+
 end
