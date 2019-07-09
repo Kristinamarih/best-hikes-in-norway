@@ -1,7 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
-require 'pry'
-
 class BestHikes::Scraper
   
   def get_page 
@@ -14,7 +10,8 @@ class BestHikes::Scraper
   
   def make_hike
     get_hike.each do |hike|
-      BestHikes::Hike.new_from_page(hike)
+      BestHikes::Hikes.new_from_page(hike)
+    end
   end
 end
 

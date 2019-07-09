@@ -4,10 +4,9 @@ class BestHikes::Hikes
   
   @@all = []
   
-  def initialize(name=nil, location=nil, url=nil)
+  def initialize(name=nil, location=nil)
     @name = name 
     @location =location
-    @url =url
     @@all << self 
   end
   
@@ -16,14 +15,18 @@ class BestHikes::Hikes
   end
   
    def self.new_from_page(hike)
-     self.new(hike.css(".sort-title").text, hike.css(".has-text-grey .has-normal-weight").text, hike.css("a").attribute("href").text)
+     self.new(hike.css(".sort-title").text, hike.css(".has-text-grey").text)
   end
   
   def length 
-    @length = hike.css(".sort-distance").text
+    @length ||= hike.css(".sort-distance").text
   end
   
   def difficulty
-    @difficulty = hike.css(".sort-difficulty").text
+    @difficulty ||= hike.css(".sort-difficulty").text
+  end
+  
+  def url 
+    @url ||= hike.css("a").attribute("href").text
   end
 end

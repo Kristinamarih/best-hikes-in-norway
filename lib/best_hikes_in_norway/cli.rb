@@ -1,41 +1,35 @@
 class BestHikes::CLI 
   
   def call 
+    BestHikes::Scraper.new.make_hike
     puts "Best Hikes in Norway"
-    BestHikes::Hikes.new_from_page(BestHikes::Scraper.get_page)
     display_hikes
-    hike_info
+  end
+  
+  def display_hikes
+    puts "Here are some of the best hikes in Norway!"
+    
+    hike_list
+    
+    puts "Please enter the number of the hike you'd like more information on:"
+    
+    input = gets.strip.to_i 
   end
   
   def hike_list
-    hike_list = BestHikes::Hikes.all.each.with_index do |hike, index|
+    BestHikes::Hikes.all.each.with_index(1) do |hike, index|
     puts "#{index}. #{hike.name} - #{hike.location}"
   end
   
   def print_hike(hike)
     puts ""
-    puts "----------- #{hike.name} - #{hike.position} -----------"
+    puts "----------- #{hike.name} - #{hike.location} -----------"
     puts ""
     puts "Length:             #{hike.length}"
     puts "Difficulty:         #{hike.difficulty}"
     puts "URL:                #{hike.url}"
   end
-  
-  def display_hikes
-    puts "Here are some of the best hikes in Norway!"
-    hike_list
-    puts "Please enter the number of the hike you'd like more information on."
-    
-    input = gets.strip.to_i 
-    
-    hike_list.detect do |hike, index|
-      if input == (index + 1)
-      puts "You selected #{hike}. Good choice!"
-      hike = BestHikes::Hikes.find(input.to_i)
-      print_hike(hike)
-    else
-      nil 
-    end
-  end
-  
 end
+
+end
+ 
