@@ -1,17 +1,11 @@
 class BestHikes::Hikes
   
-  attr_accessor :name, :location, :duration, :difficulty, :description, :url 
+  attr_accessor :name, :location, :length, :difficulty, :url 
   
   @@all = []
   
-  def self.new_from_page
-    
-  end
-  
-  def initialize(name=nil, location=nil, url=nil)
-    @name = name 
-    @location = location 
-    @url = url 
+  def initialize(hike_hash)
+    hike_hash.each{|k, v| self.send(("#{key}="), v)}
     @@all << self 
   end
   
@@ -19,16 +13,7 @@ class BestHikes::Hikes
     @@all 
   end
   
-  def duration 
-    
+   def self.new_from_page(hikes)
+    hikes.each{|hike_hash| self.new(hike_hash)}
   end
-  
-  def difficulty
-    
-  end
-  
-  def description 
-    
-  end
-
 end

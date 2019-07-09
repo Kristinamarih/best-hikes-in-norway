@@ -4,23 +4,23 @@ require 'pry'
 
 class BestHikes::Scraper
   
-  def get_page 
-    Nokogiri::HTML(open("https://outtt.com/en/guides/225/12-best-hikes-norway"))
-  end
-  
-  def get_hikes 
-    self.get_page.css("div.column.is-one-third-tablet")
-  end
-  
-  def make_hikes 
-    self.get_hikes.each do |hike|
-      hike = Hike.new 
-      hike.name = hike.css(".sort-title").text
-      hike.location = hike.css("a").attribute("href").value
-      hike.duration = 
-      hike.difficulty = 
-      hike.description = 
-      hike.url = 
+  def self.get_page 
+    page = Nokogiri::HTML(open("https://outtt.com/en/guides/225/12-best-hikes-norway"))
+    
+    hikes = []
+    
+    page.css("div.column.is-one-third-tablet").each do |hike|
+      hike_hash={
+            :name => hike.css(".sort-title").text,
+            :location => hike.css(".has-text-grey has-text-weight-normal").text,
+            :length => hike.css(".sort-distance").text,
+            :difficulty => hike.css(".sort-difficulty").text,
+            :url => hike.css("a").attribute("href").value
+      }
+      hikes << hike_hash
+      hikes
     end
   end
 end
+
+binding.pry
