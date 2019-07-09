@@ -1,18 +1,18 @@
 class BestHikes::CLI 
   
   def call 
-    BestHikes::Scraper.new
-    puts "Best Hikes in Norway"
-    start
+    list_hikes
+    hike_info
   end
   
-  def start 
+  def list_hikes 
+    puts "Best Hikes in Norway:"
+    BestHikes::Scraper.new
+  end
+  
+  def hike_info
     puts "Please enter the number of the hike you'd like more information on."
     input = gets.strip.to_i 
-    
-  end
-  
-  def list_hikes
     puts "Hikes:"
     
   end
