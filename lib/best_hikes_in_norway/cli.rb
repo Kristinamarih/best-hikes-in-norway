@@ -4,6 +4,7 @@ class BestHikes::CLI
     BestHikes::Scraper.new.make_hike
     puts "Best Hikes in Norway"
     display_hikes
+    hike_info
   end
   
   def display_hikes
@@ -11,9 +12,7 @@ class BestHikes::CLI
     
     hike_list
     
-    puts "Please enter the number of the hike you'd like more information on:"
-    
-    input = gets.strip.to_i 
+    puts "Please enter the number of the hike you'd like more information on (1-12):"
   end
   
   def hike_list
@@ -21,7 +20,9 @@ class BestHikes::CLI
     puts "#{index}. #{hike.name} - #{hike.location}"
   end
   
-  def print_hike(hike)
+  def hike_info
+    input = gets.strip.to_i 
+
     puts ""
     puts "----------- #{hike.name} - #{hike.location} -----------"
     puts ""
