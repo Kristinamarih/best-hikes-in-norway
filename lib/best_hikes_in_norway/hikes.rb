@@ -6,7 +6,7 @@ class BestHikes::Hikes
   
   def initialize(name=nil, location=nil)
     @name = name 
-    @location =location
+    @location = location
     @@all << self 
   end
   
@@ -14,7 +14,11 @@ class BestHikes::Hikes
     @@all 
   end
   
-   def self.new_from_page(hike)
+  def self.find(input)
+    self.all[input-1]
+  end
+  
+  def self.new_from_page(hike)
      self.new(hike.css(".sort-title").text, hike.css(".has-text-grey").text)
   end
   
@@ -28,5 +32,9 @@ class BestHikes::Hikes
   
   def url 
     @url ||= hike.css("a").attribute("href").text
+  end
+  
+  def hike
+    @hike ||= BestHikes::Scraper.new.get_hike
   end
 end
