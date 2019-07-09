@@ -1,7 +1,11 @@
+require 'nokogiri'
+require 'open-uri'
+require 'pry'
+
 class BestHikes::Scraper
   
   def get_page 
-    Nokogiri::HTML(open(https://www.earthtrekkers.com/best-hikes-in-norway-and-svalbard/))
+    Nokogiri::HTML(open(https://outtt.com/en/guides/225/12-best-hikes-norway))
   end
   
   def get_hikes 
@@ -11,6 +15,12 @@ class BestHikes::Scraper
   def make_hikes 
     self.get_hikes.each do |hike|
       hike = Hike.new 
-      hike
+      hike.name = 
+      hike.location = 
+      hike.duration = 
+      hike.difficulty = 
+      hike.description = 
+      hike.url = 
+    end
   end
 end

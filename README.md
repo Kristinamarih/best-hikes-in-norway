@@ -1,6 +1,6 @@
 # Best Hikes In Norway
 
-This Ruby Gem provides a CLI to view the best hikes in Norway according to Earth Trekkers (https://www.earthtrekkers.com/best-hikes-in-norway-and-svalbard/). Hikes can be selected based on duration, difficulty, and location.
+This Ruby Gem provides a CLI to view the best hikes in Norway according to Outtt (https://outtt.com/en/guides/225/12-best-hikes-norway). Hikes can be selected based on duration, difficulty, and location.
 
 ## Installation
 
