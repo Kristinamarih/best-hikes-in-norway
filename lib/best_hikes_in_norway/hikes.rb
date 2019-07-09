@@ -4,8 +4,10 @@ class BestHikes::Hikes
   
   @@all = []
   
-  def initialize(hike_hash)
-    hike_hash.each{|k, v| self.send(("#{key}="), v)}
+  def initialize(name=nil, location=nil, url=nil)
+    @name = name 
+    @location =location
+    @url =url
     @@all << self 
   end
   
@@ -13,7 +15,15 @@ class BestHikes::Hikes
     @@all 
   end
   
-   def self.new_from_page(hikes)
-    hikes.each{|hike_hash| self.new(hike_hash)}
+   def self.new_from_page(hike)
+     self.new(hike.css(".sort-title").text, hike.css(".has-text-grey .has-normal-weight").text, hike.css("a").attribute("href").text)
+  end
+  
+  def length 
+    @length = hike.css(".sort-distance").text
+  end
+  
+  def difficulty
+    @difficulty = hike.css(".sort-difficulty").text
   end
 end
