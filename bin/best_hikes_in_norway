@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/best_hikes_in_norway'
+require './lib/best_hikes_in_norway'
 
 BestHikes::CLI.new.call
