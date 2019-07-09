@@ -27,7 +27,7 @@ class BestHikes::Hikes
   end
   
   def difficulty
-    @difficulty ||= hike.css(".sort-difficulty").text
+    @difficulty ||= hike.css("span.sort-difficulty").text
   end
   
   def url 
