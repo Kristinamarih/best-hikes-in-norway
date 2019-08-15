@@ -1,6 +1,6 @@
 class BestHikes::Hikes
   
-  attr_accessor :name, :location, :length, :difficulty, :duration, :url 
+  attr_accessor :name, :location, :distance, :difficulty, :duration, :website
   
   @@all = []
   
@@ -14,31 +14,34 @@ class BestHikes::Hikes
     @@all 
   end
   
-  def self.find(input)
-    self.all[input-1]
+  def self.find(id)
+    self.all[id-1]
   end
   
   def self.new_from_page(hike)
-     self.new(hike.css(".sort-title").text, hike.css(".has-text-grey").text)
+     self.new(
+       hike.css(".sort-title").text, 
+       hike.css(".has-text-grey").text)
   end
   
-  def length 
-    @length ||= hike.css(".sort-distance").text
+  def distance 
+    @length ||= doc.css("span.sort-distance").text
   end
   
   def difficulty
-    @difficulty ||= hike.css("span.sort-difficulty").text
+    @difficulty ||= doc.css(".sort-difficulty").text
   end
   
   def duration
-    @duration ||= hike.css()
+    @duration ||= doc.css("span:nth-child(6)").text
   end
   
-  def url 
-    @url ||= hike.css("a").attribute("href").text
+  def website 
+    @website ||= doc.css("div:nth-child(6) > div > div > figure > a").attribute("href").text
+    @website = "https://outtt.com" << @website
   end
   
-  def hike
-    @hike ||= BestHikes::Scraper.new.get_hike
+  def doc
+    @doc ||= Nokogiri::HTML(open("https://outtt.com/en/guides/225/12-best-hikes-norway"))
   end
 end

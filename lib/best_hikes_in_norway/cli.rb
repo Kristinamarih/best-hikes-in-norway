@@ -10,24 +10,35 @@ class BestHikes::CLI
     puts "Here are some of the best hikes in Norway listed by name and location:"
     hike_list
     puts "Please enter the number of the hike you'd like more information on (1-12):"
-    input = gets.strip.to_i 
-    selected_hike = BestHikes::Hikes.find(input)
-    hike_info(selected_hike)
+    input = gets.strip 
+    hike = BestHikes::Hikes.find(input.to_i)
+    hike_info(hike)
+    
+    puts "Would you like to see more hikes? Please enter Y or N!"
+    input = gets.strip.downcase
+    if input == "y"
+      display_hikes
+      elsif input == "n"
+      puts "Thank you for your interest in hikes in Norway!"
+      exit
+    else
+      display_hikes
+    end
   end
   
   def hike_list
-    BestHikes::Hikes.all.each_with_index do |hike, index|
-    puts "#{index + 1}. #{hike.name} - #{hike.location}"
+    BestHikes::Hikes.all.each.with_index(1) do |hike, index|
+    puts "#{index}. #{hike.name} - #{hike.location}"
   end
   
-  def hike_info(selected_hike)
+  def hike_info(hike)
       puts ""
-      puts "----------- #{selected_hike.name} - #{selected_hike.location} -----------"
+      puts "----------- #{hike.name} - #{hike.location} -----------"
       puts ""
-      puts "Length:             #{selected_hike.length}"
-      puts "Difficulty:         #{selected_hike.difficulty}"
-      puts "Duration:           #{selected_hike.duration}"
-      puts "Website:            #{selected_hike.url}"
+      puts "Distance:           #{hike.distance}"
+      puts "Difficulty:         #{hike.difficulty}"
+      puts "Duration:           #{hike.duration}"
+      puts "Website:            #{hike.website}"
     end
   end
 end
