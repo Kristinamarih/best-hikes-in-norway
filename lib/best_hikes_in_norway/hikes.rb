@@ -1,6 +1,6 @@
 class BestHikes::Hikes
   
-  attr_accessor :name, :location, :length, :difficulty, :url 
+  attr_accessor :name, :location, :length, :difficulty, :duration, :url 
   
   @@all = []
   
@@ -28,6 +28,10 @@ class BestHikes::Hikes
   
   def difficulty
     @difficulty ||= hike.css("span.sort-difficulty").text
+  end
+  
+  def duration
+    @duration ||= hike.css()
   end
   
   def url 

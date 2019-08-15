@@ -26,6 +26,7 @@ class BestHikes::CLI
       puts ""
       puts "Length:             #{selected_hike.length}"
       puts "Difficulty:         #{selected_hike.difficulty}"
+      puts "Duration:           #{selected_hike.duration}"
       puts "Website:            #{selected_hike.url}"
     end
   end
