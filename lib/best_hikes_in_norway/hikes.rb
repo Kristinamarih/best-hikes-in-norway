@@ -30,12 +30,16 @@ class BestHikes::Hike
   end
 
   def self.hike_info(hike)
+    puts ""
+    puts ""
+    puts ""
     puts "#{hike.name} - #{hike.location}"
     puts ""
     puts "Distance: #{hike.distance}"
     puts "Difficulty: #{hike.difficulty}"
     puts "Duration: #{hike.duration}"
     puts "Website: #{hike.website}"
+    puts ""
   end
 end
 

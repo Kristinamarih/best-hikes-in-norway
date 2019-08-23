@@ -1,8 +1,9 @@
-module BestHikes 
+module BestHikes
 end
 
 require "nokogiri"
 require "open-uri"
+require "colorize"
 
 require_relative "../lib/best_hikes_in_norway/cli.rb"
 require_relative "../lib/best_hikes_in_norway/hikes.rb"
