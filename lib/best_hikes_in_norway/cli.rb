@@ -3,7 +3,7 @@ class BestHikes::CLI
 
   def call
     BestHikes::Scraper.new.make_hikes # call on Scraper class to get hikes
-    puts "Best Hikes in Norway!".bold.red
+    puts "Best Hikes in Norway!".red.on_blue.bold
     display_hikes
   end
 
