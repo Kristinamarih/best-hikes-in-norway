@@ -1,11 +1,15 @@
 class BestHikes::Hike
+  # each instance (object) contains instance variables which are the state of
+  # the object (attributes). Object behaviors are represented by methods.
 
   attr_accessor :name, :location, :distance, :difficulty, :duration, :website
   # attr_accessor to read and write attributes
 
-  @@all = []
+  @@all = [] # class variable is shared by all instances of the class
 
-  def initialize(name, location, distance=nil, difficulty=nil, duration=nil, website=nil) # initialize new instance of Hike with hike details
+  def initialize(name, location, distance=nil, difficulty=nil, duration=nil, website=nil)
+    # initialize new instance of Hike with hike details
+    # assign arugments to instance variables
     @name = name
     @location = location
     @distance = distance
@@ -14,7 +18,7 @@ class BestHikes::Hike
     @website = website
     @@all << self
   end
-
+  # use self to indicate class methods, can only be called on class
   def self.all
     @@all
   end
