@@ -14,12 +14,12 @@ class BestHikes::CLI
     puts "Please enter the number of the hike you'd like more information on (1-12):".red
 
     input = gets.strip.to_i
-    if input > 12 || input.kind_of?(Integer)
-      puts "Oops! Please enter a number between 1 and 12".red
-      input = gets.strip.to_i
+    if input.between?(1,12)
       hike = BestHikes::Hike.find(input)
       BestHikes::Hike.hike_info(hike)
     else
+      puts "Oops! Please enter a number between 1 and 12".red
+      input = gets.strip.to_i
       hike = BestHikes::Hike.find(input) # call on find method in Hike class & assign to hike variable
       BestHikes::Hike.hike_info(hike)
     end
