@@ -1,11 +1,16 @@
 class BestHikes::Scraper
 
   def get_page
-    Nokogiri::HTML(open("https://outtt.com/en/guides/225/12-best-hikes-norway")) # get webpage to scrape
+    Nokogiri::HTML(open("https://outtt.com/en/guides/225/12-best-hikes-norway"))
   end
 
   def get_hike
-     self.get_page.css("div.columns.is-multiline div.column.is-one-third-tablet") # set method to scrape webpage for each hike section
+     self.get_page.css("div.columns.is-multiline div.column.is-one-third-tablet")
+  end
+
+  def test_method
+   return "hello"
+   "goodbye"
   end
 
   def make_hikes
@@ -17,7 +22,7 @@ class BestHikes::Scraper
       duration = h.css("span:nth-child(6)").text.gsub(/\s+/, "")
       url = h.css("a").attribute("href").text
       website = "https://outtt.com" << url
-      BestHikes::Hike.new(name, location, distance, difficulty, duration, website) # create hike object 
+      BestHikes::Hike.new(name, location, distance, difficulty, duration, website) # create hike object
     end
   end
 end

@@ -1,4 +1,3 @@
-require 'pry'
 class BestHikes::CLI
 
   def call
@@ -15,8 +14,8 @@ class BestHikes::CLI
     puts "Please enter the number of the hike you'd like more information on (1-12):".red
 
     input = gets.strip.to_i
-    if input > 12
-      puts "Oops! That hike doesn't exist (yet) - please enter a number between 1 and 12".red
+    if input > 12 || input.kind_of?(Integer)
+      puts "Oops! Please enter a number between 1 and 12".red
       input = gets.strip.to_i
       hike = BestHikes::Hike.find(input)
       BestHikes::Hike.hike_info(hike)
